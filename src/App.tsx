@@ -240,18 +240,21 @@ export default function App() {
             <button
               key={day}
               onClick={() => setPreviewStarterDay(day)}
-              className={`py-2 border text-[10px] font-bold transition-all ${
-                (previewStarterDay ?? currentStarterDay) === day
+              className={`min-h-[52px] border text-[10px] font-bold transition-all flex flex-col items-center justify-center px-1 ${
+                previewStarterDay === day
                   ? 'bg-blueprint-primary text-blueprint-bg border-blueprint-primary'
+                  : currentStarterDay === day
+                    ? 'border-blueprint-accent text-blueprint-accent'
                   : 'border-blueprint-primary text-blueprint-primary hover:bg-blueprint-primary hover:text-blueprint-bg'
               }`}
             >
-              Day {day}
+              <span>Day {day}</span>
+              {currentStarterDay === day && <span>(Current)</span>}
             </button>
           ))}
         </div>
         {previewStarterDay !== null && (
-          <Button variant="ghost" onClick={() => setPreviewStarterDay(null)}>
+          <Button variant="outline" onClick={() => setPreviewStarterDay(null)}>
             Exit Preview
           </Button>
         )}
@@ -413,7 +416,7 @@ export default function App() {
       <div className="space-y-8 pb-32 font-mono">
         <header className="flex flex-col items-center pt-4 border-b-2 border-blueprint-primary pb-4">
           <div className="text-6xl font-bold text-blueprint-accent italic tracking-tighter">D.{displayedStarterDay}</div>
-          {isPreviewMode && <div className="mt-2 text-[10px] text-blueprint-primary uppercase tracking-[2px]">Preview Mode</div>}
+          {isPreviewMode && <div className="mt-2 bg-blueprint-primary px-3 py-1 text-[10px] font-bold text-blueprint-bg uppercase tracking-[2px]">Preview Mode</div>}
         </header>
 
         <section>
@@ -458,12 +461,12 @@ export default function App() {
           )}
         </section>
 
+        <StarterDayPreviewPanel />
+
         <Button variant="outline" onClick={restartStarterSetup} className="flex items-center justify-center gap-2" disabled={isPreviewMode}>
           <RotateCcw size={16} strokeWidth={2} />
           <span>RESTART STARTER SETUP</span>
         </Button>
-
-        <StarterDayPreviewPanel />
       </div>
     );
   };
