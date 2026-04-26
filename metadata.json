@@ -1,0 +1,6 @@
+{
+  "name": "Sourdough Companion",
+  "description": "A mobile-first sourdough assistant for tracking starter growth and managing bread-making timelines with live timers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

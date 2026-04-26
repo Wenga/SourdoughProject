@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --color-blueprint-bg: #E4E3D3;
+  --color-blueprint-primary: #0067A5;
+  --color-blueprint-accent: #C24C28;
+  --color-blueprint-muted: #9BAEB6;
+  --color-blueprint-text: #2D3A3A;
+  --color-blueprint-line: rgba(0, 103, 165, 0.2);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    @apply w-full min-h-screen;
+  }
+
+  body {
+    @apply bg-[#CAC9B9] text-blueprint-text font-sans;
+  }
+}
